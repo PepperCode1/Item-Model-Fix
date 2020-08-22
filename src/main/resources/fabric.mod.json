@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "itemmodelfix",
+  "version": "${version}",
+
+  "name": "Item Model Fix",
+  "description": "Fixes gaps in default item models.\nTo access the configuration, follow the instructions on the mod website.",
+  "authors": [
+    "Pepper_Bell"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/item-model-fix",
+    "issues": "https://github.com/PepperCode1/ItemModelFix/issues",
+    "sources": "https://github.com/PepperCode1/ItemModelFix"
+  },
+
+  "license": "GPLv3",
+  "icon": "assets/itemmodelfix/icon.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.pepperbell.itemmodelfix.ItemModelFix"
+    ],
+    "modmenu": [
+      "me.pepperbell.itemmodelfix.integration.ModMenuImpl"
+    ]
+  },
+  "mixins": [
+    "itemmodelfix.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.0",
+    "minecraft": ">=1.15"
+  }
+}
