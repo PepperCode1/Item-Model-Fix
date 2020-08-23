@@ -9,12 +9,12 @@ import net.minecraft.client.render.block.FluidRenderer;
 
 @Mixin(value=FluidRenderer.class, priority=100)
 public class FluidRendererMixin {
-	@ModifyConstant(method="render(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/fluid/FluidState;)Z",constant={@Constant(floatValue=0.001F)})
+	@ModifyConstant(method="render(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/fluid/FluidState;)Z", constant={@Constant(floatValue=0.001F)})
 	public float onRender(float value) {
 		return ItemModelFix.getConfig().getOptions().fixFluidRendering ? 0 : value;
 	}
 	
-	@ModifyConstant(method="render(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/fluid/FluidState;)Z",constant={@Constant(doubleValue=0.0010000000474974513D)})
+	@ModifyConstant(method="render(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/fluid/FluidState;)Z", constant={@Constant(doubleValue=0.0010000000474974513D)})
 	public double onRender(double value) {
 		return ItemModelFix.getConfig().getOptions().fixFluidRendering ? 0 : value;
 	}
