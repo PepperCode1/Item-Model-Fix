@@ -14,14 +14,11 @@
     "sources": "https://github.com/PepperCode1/ItemModelFix"
   },
 
-  "license": "GPLv3",
+  "license": "LGPLv3",
   "icon": "assets/itemmodelfix/icon.png",
 
   "environment": "client",
   "entrypoints": {
-    "client": [
-      "me.pepperbell.itemmodelfix.ItemModelFix"
-    ],
     "modmenu": [
       "me.pepperbell.itemmodelfix.integration.ModMenuImpl"
     ]

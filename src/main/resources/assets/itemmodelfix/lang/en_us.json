@@ -1,0 +1,14 @@
+{
+	"itemmodelfix.configuration.title": "Item Model Fix Configuration",
+	"itemmodelfix.category.general": "General",
+	"itemmodelfix.category.experimental": "Experimental",
+	"itemmodelfix.options.generation_type": "Item Model Generation Type",
+	"itemmodelfix.options.generation_type.vanilla": "Vanilla",
+	"itemmodelfix.options.generation_type.vanilla.tooltip": "Performance impact: \u00A7b\u00A7lnone\u00A7r\nUses Vanilla model generation.",
+	"itemmodelfix.options.generation_type.unlerp": "Unlerp",
+	"itemmodelfix.options.generation_type.unlerp.tooltip": "Performance impact: \u00A7b\u00A7lnone\u00A7r\nUses Vanilla model generation,\nbut applies some math to make it look correct.\nMight cause flickering along model edges.",
+	"itemmodelfix.options.generation_type.pixel": "Pixel",
+	"itemmodelfix.options.generation_type.pixel.tooltip": "Performance impact: \u00A7a\u00A7llow\u00A7r-\u00A7e\u00A7lmedium\u00A7r\nGenerates all pixels individually.\nProvides best results but causes a larger impact\nwith higher resolution resource packs.",
+	"itemmodelfix.options.fix_fluid_rendering": "Fix Fluid Rendering",
+	"itemmodelfix.options.fix_fluid_rendering.tooltip": "Performance impact: \u00A7b\u00A7lnone\nFixes edges between fluid texture sides."
+}
