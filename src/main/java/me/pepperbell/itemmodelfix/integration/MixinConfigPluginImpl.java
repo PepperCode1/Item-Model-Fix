@@ -24,11 +24,15 @@ public class MixinConfigPluginImpl implements IMixinConfigPlugin {
 	public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
 		boolean fixFluidRendering = ItemModelFix.getConfig().getOptions().fixFluidRendering;
 		boolean sodiumLoaded = FabricLoader.getInstance().isModLoaded("sodium");
+		boolean frexLoaded = FabricLoader.getInstance().isModLoaded("frex");
+		if (targetClassName.equals("net.minecraft.client.render.block.FluidRenderer")) {
+			return fixFluidRendering;
+		}
 		if (targetClassName.equals("me.jellysquid.mods.sodium.client.render.pipeline.FluidRenderer")) {
 			return fixFluidRendering && sodiumLoaded;
 		}
-		if (targetClassName.equals("net.minecraft.client.render.block.FluidRenderer")) {
-			return fixFluidRendering && !sodiumLoaded;
+		if (targetClassName.equals("grondag.frex.api.fluid.AbstractFluidModel")) {
+			return fixFluidRendering && frexLoaded;
 		}
 		return true;
 	}

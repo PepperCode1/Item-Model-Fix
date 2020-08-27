@@ -9,7 +9,8 @@
   "client": [
     "ItemModelGeneratorMixin",
     "FluidRendererMixin",
-    "SodiumFluidRendererMixin"
+    "SodiumFluidRendererMixin",
+    "FrexFluidModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1

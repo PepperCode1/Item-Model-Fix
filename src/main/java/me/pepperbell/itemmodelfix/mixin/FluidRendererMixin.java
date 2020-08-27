@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import net.minecraft.client.render.block.FluidRenderer;
 
-@Mixin(value=FluidRenderer.class, priority=100)
+@Mixin(FluidRenderer.class)
 public class FluidRendererMixin {
 	@ModifyConstant(method="render(Lnet/minecraft/world/BlockRenderView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/render/VertexConsumer;Lnet/minecraft/fluid/FluidState;)Z", constant={@Constant(floatValue=0.001F)})
 	public float onRender(float value) {

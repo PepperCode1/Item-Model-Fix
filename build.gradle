@@ -12,6 +12,10 @@ group = project.maven_group
 
 repositories {
 	maven { url = "https://www.cursemaven.com" }
+	maven {
+    	name = "dblsaiko"
+    	url = "https://maven.dblsaiko.net/"
+    }
 }
 
 dependencies {
@@ -33,6 +37,7 @@ dependencies {
     //include "me.shedaniel.cloth:config-2:${clothconfig_version}"
     
     compileOnly("curse.maven:sodium-0.1.0:3003093")
+    compileOnly("grondag:frex-mc116:3.3.135")
     
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
