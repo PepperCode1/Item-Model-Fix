@@ -3,7 +3,7 @@ package me.pepperbell.itemmodelfix.integration;
 import java.util.Optional;
 
 import io.github.prospector.modmenu.api.ConfigScreenFactory;
-import me.pepperbell.itemmodelfix.ItemModelFix;
+import me.pepperbell.itemmodelfix.data.Config;
 import me.pepperbell.itemmodelfix.util.ModelGenerationType;
 import me.pepperbell.itemmodelfix.util.ParsingUtil;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -14,7 +14,13 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.TranslatableText;
 
 public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
+	private Config config;
+	
 	private boolean reloadResources = false;
+	
+	public ClothConfigFactory(Config config) {
+		this.config = config;
+	}
 	
 	@Override
 	public Screen create(Screen parent) {
@@ -22,7 +28,7 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 				.setParentScreen(parent)
 				.setTitle(new TranslatableText("itemmodelfix.configuration.title"))
 				.setSavingRunnable(() -> {
-					ItemModelFix.getConfig().save();
+					config.save();
 					if (reloadResources) {
 						MinecraftClient.getInstance().reloadResources();
 					}
@@ -31,12 +37,12 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 		
 		ConfigCategory general = builder.getOrCreateCategory(new TranslatableText("itemmodelfix.category.general"));
-		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("itemmodelfix.options.generation_type"), ModelGenerationType.class, ItemModelFix.getConfig().getOptions().generationType)
+		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("itemmodelfix.options.generation_type"), ModelGenerationType.class, config.getOptions().generationType)
 				.setSaveConsumer((value) -> {
-					if (ItemModelFix.getConfig().getOptions().generationType != value) {
+					if (config.getOptions().generationType != value) {
 						reloadResources = true;
 					}
-					ItemModelFix.getConfig().getOptions().generationType = value;
+					config.getOptions().generationType = value;
 				})
 				.setEnumNameProvider((value) -> {
 					return new TranslatableText("itemmodelfix.options.generation_type."+value.toString().toLowerCase());
@@ -48,9 +54,9 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 				.build());
 		
 		ConfigCategory experimental = builder.getOrCreateCategory(new TranslatableText("itemmodelfix.category.experimental"));
-		experimental.addEntry(entryBuilder.startBooleanToggle(new TranslatableText("itemmodelfix.options.fix_fluid_rendering"), ItemModelFix.getConfig().getOptions().fixFluidRendering)
+		experimental.addEntry(entryBuilder.startBooleanToggle(new TranslatableText("itemmodelfix.options.fix_fluid_rendering"), config.getOptions().fixFluidRendering)
 				.setSaveConsumer((value) -> {
-					ItemModelFix.getConfig().getOptions().fixFluidRendering = value;
+					config.getOptions().fixFluidRendering = value;
 				})
 				.setTooltip(Optional.ofNullable(ParsingUtil.parseNewlines("itemmodelfix.options.fix_fluid_rendering.tooltip")))
 				.setDefaultValue(false)

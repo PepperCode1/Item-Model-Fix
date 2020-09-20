@@ -10,8 +10,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/item-model-fix",
-    "issues": "https://github.com/PepperCode1/ItemModelFix/issues",
-    "sources": "https://github.com/PepperCode1/ItemModelFix"
+    "issues": "https://github.com/PepperCode1/Item-Model-Fix/issues",
+    "sources": "https://github.com/PepperCode1/Item-Model-Fix"
   },
 
   "license": "LGPLv3",
@@ -30,5 +30,9 @@
   "depends": {
     "fabricloader": ">=0.7.0",
     "minecraft": ">=1.15"
+  },
+  "recommends": {
+    "modmenu": "*",
+    "cloth-config2": "*"
   }
 }
