@@ -1,16 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "plugin": "me.pepperbell.itemmodelfix.integration.MixinConfigPluginImpl",
   "package": "me.pepperbell.itemmodelfix.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-  ],
   "client": [
-    "ItemModelGeneratorMixin",
-    "FluidRendererMixin",
-    "SodiumFluidRendererMixin",
-    "FrexFluidModelMixin"
+    "ItemModelGeneratorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Item Model Fix",
-  "description": "Fixes gaps in default item models.\nTo access the configuration, follow the instructions on the mod website.",
+  "description": "Fixes gaps in generated item models.\nTo access the configuration, follow the instructions on the mod website.",
   "authors": [
     "Pepper_Bell"
   ],
@@ -14,7 +14,7 @@
     "sources": "https://github.com/PepperCode1/Item-Model-Fix"
   },
 
-  "license": "LGPLv3",
+  "license": "LGPL-3.0-only",
   "icon": "assets/itemmodelfix/icon.png",
 
   "environment": "client",
