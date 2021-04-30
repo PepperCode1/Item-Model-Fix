@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import me.pepperbell.itemmodelfix.data.Config;
+import me.pepperbell.itemmodelfix.config.Config;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class ItemModelFix {

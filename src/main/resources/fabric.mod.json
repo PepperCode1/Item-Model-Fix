@@ -20,7 +20,7 @@
   "environment": "client",
   "entrypoints": {
     "modmenu": [
-      "me.pepperbell.itemmodelfix.integration.ModMenuImpl"
+      "me.pepperbell.itemmodelfix.config.ModMenuApiImpl"
     ]
   },
   "mixins": [

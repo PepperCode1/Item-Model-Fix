@@ -1,13 +1,13 @@
 {
-  "itemmodelfix.config.title": "Настройки Item Model Fix",
-  "itemmodelfix.config.category.general": "Основные",
-  "itemmodelfix.options.generation_type": "Тип генерации модели предмета",
-  "itemmodelfix.options.generation_type.vanilla": "Ванильный",
-  "itemmodelfix.options.generation_type.vanilla.tooltip": "Влияние на производительность: \u00A7b\u00A7lотсутствует\u00A7r\nИспользует ванильную генерацию модели.",
-  "itemmodelfix.options.generation_type.unlerp": "Unlerp",
-  "itemmodelfix.options.generation_type.unlerp.tooltip": "Влияние на производительность: \u00A7b\u00A7lотсутствует\u00A7r\nИспользует ванильную генерацию модели, но\nс некоторыми математическими вычислениями,\nчтобы она выглядела правильно. Может вызвать\nмерцание эффекта зачарования по краям модели.",
-  "itemmodelfix.options.generation_type.outline": "Границы",
-  "itemmodelfix.options.generation_type.outline.tooltip": "Влияние на производительность: \u00A7b\u00A7lотсутствует\u00A7r\nПохож на предыдущий, но использует другой\nалгоритм генерации, чтобы исправить\nмерцание зачарованного предмета.",
-  "itemmodelfix.options.generation_type.pixel": "Воксели",
-  "itemmodelfix.options.generation_type.pixel.tooltip": "Влияние на производительность: \u00A7a\u00A7lнизкая\u00A7r\nГенерирует каждый воксель отдельно.\nОбеспечивает наилучший результат, но\nвызывает больше нагрузки с текстурами\nвысокого разрешения."
+  "screen.itemmodelfix.config.title": "Настройки Item Model Fix",
+  "category.itemmodelfix.general": "Основные",
+  "option.itemmodelfix.generation_type": "Тип генерации модели предмета",
+  "option.itemmodelfix.generation_type.vanilla": "Ванильный",
+  "option.itemmodelfix.generation_type.vanilla.tooltip": "Влияние на производительность: \u00A7b\u00A7lотсутствует\u00A7r\nИспользует ванильную генерацию модели.",
+  "option.itemmodelfix.generation_type.unlerp": "Unlerp",
+  "option.itemmodelfix.generation_type.unlerp.tooltip": "Влияние на производительность: \u00A7b\u00A7lотсутствует\u00A7r\nИспользует ванильную генерацию модели, но\nс некоторыми математическими вычислениями,\nчтобы она выглядела правильно. Может вызвать\nмерцание эффекта зачарования по краям модели.",
+  "option.itemmodelfix.generation_type.outline": "Границы",
+  "option.itemmodelfix.generation_type.outline.tooltip": "Влияние на производительность: \u00A7b\u00A7lотсутствует\u00A7r\nПохож на предыдущий, но использует другой\nалгоритм генерации, чтобы исправить\nмерцание зачарованного предмета.",
+  "option.itemmodelfix.generation_type.pixel": "Воксели",
+  "option.itemmodelfix.generation_type.pixel.tooltip": "Влияние на производительность: \u00A7a\u00A7lнизкая\u00A7r\nГенерирует каждый воксель отдельно.\nОбеспечивает наилучший результат, но\nвызывает больше нагрузки с текстурами\nвысокого разрешения."
 }

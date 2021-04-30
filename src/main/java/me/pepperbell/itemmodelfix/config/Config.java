@@ -1,4 +1,4 @@
-package me.pepperbell.itemmodelfix.data;
+package me.pepperbell.itemmodelfix.config;
 
 import java.io.File;
 import java.io.FileReader;

@@ -1,10 +1,9 @@
-package me.pepperbell.itemmodelfix.integration;
+package me.pepperbell.itemmodelfix.config;
 
 import java.util.Locale;
 import java.util.Optional;
 
 import io.github.prospector.modmenu.api.ConfigScreenFactory;
-import me.pepperbell.itemmodelfix.data.Config;
 import me.pepperbell.itemmodelfix.util.ModelGenerationType;
 import me.pepperbell.itemmodelfix.util.ParsingUtil;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
@@ -14,6 +13,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.TranslatableText;
 
+@SuppressWarnings("deprecation")
 public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 	private Config config;
 
@@ -27,12 +27,12 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 
 		ConfigBuilder builder = ConfigBuilder.create()
 				.setParentScreen(parent)
-				.setTitle(new TranslatableText("itemmodelfix.config.title"))
+				.setTitle(new TranslatableText("screen.itemmodelfix.config.title"))
 				.setSavingRunnable(savingRunnable);
 		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-		ConfigCategory general = builder.getOrCreateCategory(new TranslatableText("itemmodelfix.config.category.general"));
-		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("itemmodelfix.options.generation_type"), ModelGenerationType.class, config.getOptions().generationType)
+		ConfigCategory general = builder.getOrCreateCategory(new TranslatableText("category.itemmodelfix.general"));
+		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("option.itemmodelfix.generation_type"), ModelGenerationType.class, config.getOptions().generationType)
 				.setSaveConsumer((value) -> {
 					if (config.getOptions().generationType != value) {
 						savingRunnable.reloadResources = true;
@@ -40,10 +40,10 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 					config.getOptions().generationType = value;
 				})
 				.setEnumNameProvider((value) -> {
-					return new TranslatableText("itemmodelfix.options.generation_type."+value.toString().toLowerCase(Locale.ROOT));
+					return new TranslatableText("option.itemmodelfix.generation_type." + value.name().toLowerCase(Locale.ROOT));
 				})
 				.setTooltipSupplier((value) -> {
-					return Optional.ofNullable(ParsingUtil.parseNewlines("itemmodelfix.options.generation_type."+value.toString().toLowerCase(Locale.ROOT)+".tooltip"));
+					return Optional.ofNullable(ParsingUtil.parseNewlines("option.itemmodelfix.generation_type." + value.name().toLowerCase(Locale.ROOT) + ".tooltip"));
 				})
 				.setDefaultValue(Config.Options.DEFAULT.generationType)
 				.build());
