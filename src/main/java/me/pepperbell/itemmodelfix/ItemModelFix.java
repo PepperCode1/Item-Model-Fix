@@ -10,6 +10,7 @@ import me.pepperbell.itemmodelfix.config.Config;
 import net.fabricmc.loader.api.FabricLoader;
 
 public class ItemModelFix {
+	public static final String ID = "itemmodelfix";
 	public static final Logger LOGGER = LogManager.getLogger("ItemModelFix");
 
 	private static Config config;

@@ -34,5 +34,13 @@
   "recommends": {
     "modmenu": "*",
     "cloth-config2": "*"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/7rnTYXu"
+      }
+    }
   }
 }
