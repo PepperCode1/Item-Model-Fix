@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.PrimitiveIterator;
 
 import net.minecraft.client.render.model.json.ModelElement;
 import net.minecraft.client.render.model.json.ModelElementFace;
 import net.minecraft.client.render.model.json.ModelElementTexture;
 import net.minecraft.client.texture.Sprite;
-import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3f;
 
 public class ModelUtil {
 	public static void unlerpElements(List<ModelElement> elements, float delta) {
@@ -33,13 +34,15 @@ public class ModelUtil {
 		Map<Direction, ModelElementFace> map = new HashMap<>();
 		map.put(Direction.SOUTH, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] {0.0F, 0.0F, 16.0F, 16.0F}, 0, animationFrameDelta)));
 		map.put(Direction.NORTH, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] {16.0F, 0.0F, 0.0F, 16.0F}, 0, animationFrameDelta)));
-		elements.add(new ModelElement(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), map, null, true));
+		elements.add(new ModelElement(new Vec3f(0.0F, 0.0F, 7.5F), new Vec3f(16.0F, 16.0F, 8.5F), map, null, true));
 
 		int first1 = -1;
 		int first2 = -1;
 		int last1 = -1;
 		int last2 = -1;
-		for (int frame = 0; frame < sprite.getFrameCount(); ++frame) {
+		PrimitiveIterator.OfInt frames = sprite.getDistinctFrameCount().iterator();
+		while (frames.hasNext()) {
+			int frame = frames.nextInt();
 			for (int y = 0; y < height; ++y) {
 				for (int x = 0; x < width; ++x) {
 					if (!isPixelTransparent(sprite, frame, x, y)) {
@@ -121,13 +124,13 @@ public class ModelUtil {
 	public static ModelElement createHorizontalOutlineElement(Direction direction, int layer, String key, int start, int end, int y, int height, float animationFrameDelta, float xFactor, float yFactor) {
 		Map<Direction, ModelElementFace> faces = new HashMap<>();
 		faces.put(direction, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] {start/xFactor, y/yFactor, (end+1)/xFactor, (y+1)/yFactor}, 0, animationFrameDelta)));
-		return new ModelElement(new Vector3f(start/xFactor, (height-(y+1))/yFactor, 7.5F), new Vector3f((end+1)/xFactor, (height-y)/yFactor, 8.5F), faces, null, true);
+		return new ModelElement(new Vec3f(start/xFactor, (height-(y+1))/yFactor, 7.5F), new Vec3f((end+1)/xFactor, (height-y)/yFactor, 8.5F), faces, null, true);
 	}
 
 	public static ModelElement createVerticalOutlineElement(Direction direction, int layer, String key, int start, int end, int x, int height, float animationFrameDelta, float xFactor, float yFactor) {
 		Map<Direction, ModelElementFace> faces = new HashMap<>();
 		faces.put(direction, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] {(x+1)/xFactor, start/yFactor, x/xFactor, (end+1)/yFactor}, 0, animationFrameDelta)));
-		return new ModelElement(new Vector3f(x/xFactor, (height-(end+1))/yFactor, 7.5F), new Vector3f((x+1)/xFactor, (height-start)/yFactor, 8.5F), faces, null, true);
+		return new ModelElement(new Vec3f(x/xFactor, (height-(end+1))/yFactor, 7.5F), new Vec3f((x+1)/xFactor, (height-start)/yFactor, 8.5F), faces, null, true);
 	}
 
 	public static ModelElementTexture createUnlerpedTexture(float[] uvs, int rotation, float delta) {
@@ -142,7 +145,9 @@ public class ModelUtil {
 		float xFactor = width/16.0F;
 		float yFactor = height/16.0F;
 
-		for (int frame = 0; frame < sprite.getFrameCount(); ++frame) {
+		PrimitiveIterator.OfInt frames = sprite.getDistinctFrameCount().iterator();
+		while (frames.hasNext()) {
+			int frame = frames.nextInt();
 			for (int y = 0; y < height; ++y) {
 				for (int x = 0; x < width; ++x) {
 					if (!isPixelTransparent(sprite, frame, x, y)) {
@@ -165,7 +170,7 @@ public class ModelUtil {
 							faces.put(Direction.UP, face);
 						}
 
-						elements.add(new ModelElement(new Vector3f(x/xFactor, (height-(y+1))/yFactor, 7.5F), new Vector3f((x+1)/xFactor, (height-y)/yFactor, 8.5F), faces, null, true));
+						elements.add(new ModelElement(new Vec3f(x/xFactor, (height-(y+1))/yFactor, 7.5F), new Vec3f((x+1)/xFactor, (height-y)/yFactor, 8.5F), faces, null, true));
 					}
 				}
 			}
