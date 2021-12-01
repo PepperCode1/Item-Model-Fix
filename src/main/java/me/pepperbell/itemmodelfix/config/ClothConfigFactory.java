@@ -3,7 +3,7 @@ package me.pepperbell.itemmodelfix.config;
 import java.util.Locale;
 import java.util.Optional;
 
-import io.github.prospector.modmenu.api.ConfigScreenFactory;
+import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import me.pepperbell.itemmodelfix.util.ModelGenerationType;
 import me.pepperbell.itemmodelfix.util.ParsingUtil;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
