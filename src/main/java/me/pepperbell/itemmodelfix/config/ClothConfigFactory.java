@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.Optional;
 
 import io.github.prospector.modmenu.api.ConfigScreenFactory;
-import me.pepperbell.itemmodelfix.util.ModelGenerationType;
+import me.pepperbell.itemmodelfix.model.ItemModelGenerationType;
 import me.pepperbell.itemmodelfix.util.ParsingUtil;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
@@ -32,7 +32,7 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
 		ConfigCategory general = builder.getOrCreateCategory(new TranslatableText("category.itemmodelfix.general"));
-		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("option.itemmodelfix.generation_type"), ModelGenerationType.class, config.getOptions().generationType)
+		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("option.itemmodelfix.generation_type"), ItemModelGenerationType.class, config.getOptions().generationType)
 				.setSaveConsumer((value) -> {
 					if (config.getOptions().generationType != value) {
 						savingRunnable.reloadResources = true;
