@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import me.pepperbell.itemmodelfix.ItemModelFix;
-import me.pepperbell.itemmodelfix.util.ModelGenerationType;
+import me.pepperbell.itemmodelfix.model.ItemModelGenerationType;
 
 public class Config {
 	private static final Gson GSON = new GsonBuilder()
@@ -57,7 +57,7 @@ public class Config {
 	public static class Options {
 		public static final Options DEFAULT = new Options();
 
-		public ModelGenerationType generationType = ModelGenerationType.OUTLINE;
+		public ItemModelGenerationType generationType = ItemModelGenerationType.OUTLINE;
 
 		public boolean replaceInvalidOptions(Options options) {
 			boolean invalid = false;
