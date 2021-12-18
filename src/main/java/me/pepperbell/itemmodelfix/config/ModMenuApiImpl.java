@@ -12,6 +12,6 @@ public class ModMenuApiImpl implements ModMenuApi {
 		if (FabricLoader.getInstance().isModLoaded("cloth-config2")) {
 			return new ClothConfigFactory(ItemModelFix.getConfig());
 		}
-		return (screen) -> null;
+		return screen -> null;
 	}
 }
