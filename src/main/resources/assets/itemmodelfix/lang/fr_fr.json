@@ -1,0 +1,13 @@
+{
+  "screen.itemmodelfix.config.title": "Paramètres d'Item Model Fix",
+  "category.itemmodelfix.general": "Général",
+  "option.itemmodelfix.generation_type": "Type de génération du modèle d'objets",
+  "option.itemmodelfix.generation_type.vanilla": "Vanilla",
+  "option.itemmodelfix.generation_type.vanilla.tooltip": "Impact sur les performances: \u00A7b\u00A7laucun\u00A7r\nUtilise la génération de modèle Vanilla.",
+  "option.itemmodelfix.generation_type.unlerp": "Unlerp",
+  "option.itemmodelfix.generation_type.unlerp.tooltip": "Impact sur les performances: \u00A7b\u00A7laucun\u00A7r\nUtilise la génération de modèle Vanilla,\nmais recalcule partiellement pour\naméliorer le résultat. Peut causer du\nclignotement sur les bords des modèles.",
+  "option.itemmodelfix.generation_type.outline": "Outline",
+  "option.itemmodelfix.generation_type.outline.tooltip": "Impact sur les performances: \u00A7b\u00A7laucun\u00A7r\nMême chose que le mode unlerp, mais\nutilise un algorithme différent pour\nempêcher les enchantements de clignoter.",
+  "option.itemmodelfix.generation_type.pixel": "Pixel",
+  "option.itemmodelfix.generation_type.pixel.tooltip": "Impact sur les performances: \u00A7b\u00A7laucun\u00A7r-\u00A7a\u00A7lfaible\u00A7r\nGénère tous les pixels individuellement.\nDonne les meilleurs résultats, mais a\nun plus grand impact avec les packs de\ntextures de plus hautes résolutions."
+}
