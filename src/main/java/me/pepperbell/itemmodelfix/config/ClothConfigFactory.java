@@ -12,7 +12,7 @@ import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 
 public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 	private Config config;
@@ -27,12 +27,12 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 
 		ConfigBuilder builder = ConfigBuilder.create()
 				.setParentScreen(parent)
-				.setTitle(new TranslatableText("screen.itemmodelfix.config.title"))
+				.setTitle(Text.translatable("screen.itemmodelfix.config.title"))
 				.setSavingRunnable(savingRunnable);
 		ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
-		ConfigCategory general = builder.getOrCreateCategory(new TranslatableText("category.itemmodelfix.general"));
-		general.addEntry(entryBuilder.startEnumSelector(new TranslatableText("option.itemmodelfix.generation_type"), ItemModelGenerationType.class, config.getOptions().generationType)
+		ConfigCategory general = builder.getOrCreateCategory(Text.translatable("category.itemmodelfix.general"));
+		general.addEntry(entryBuilder.startEnumSelector(Text.translatable("option.itemmodelfix.generation_type"), ItemModelGenerationType.class, config.getOptions().generationType)
 				.setSaveConsumer((value) -> {
 					if (config.getOptions().generationType != value) {
 						savingRunnable.reloadResources = true;
@@ -40,7 +40,7 @@ public class ClothConfigFactory implements ConfigScreenFactory<Screen> {
 					config.getOptions().generationType = value;
 				})
 				.setEnumNameProvider((value) -> {
-					return new TranslatableText("option.itemmodelfix.generation_type." + value.name().toLowerCase(Locale.ROOT));
+					return Text.translatable("option.itemmodelfix.generation_type." + value.name().toLowerCase(Locale.ROOT));
 				})
 				.setTooltipSupplier((value) -> {
 					return Optional.ofNullable(ParsingUtil.parseNewlines("option.itemmodelfix.generation_type." + value.name().toLowerCase(Locale.ROOT) + ".tooltip"));
