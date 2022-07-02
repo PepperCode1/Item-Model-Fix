@@ -1,0 +1,13 @@
+{
+  "screen.itemmodelfix.config.title": "Konfiguracja Item Model Fix",
+  "category.itemmodelfix.general": "Ogólne",
+  "option.itemmodelfix.generation_type": "Typ generacji modelu przedmiotu",
+  "option.itemmodelfix.generation_type.vanilla": "Vanilla",
+  "option.itemmodelfix.generation_type.vanilla.tooltip": "Wpływ na wydajność: \u00A7b\u00A7lżaden\u00A7r\nUżywa domyślnej generacji modelu.",
+  "option.itemmodelfix.generation_type.unlerp": "Unlerp",
+  "option.itemmodelfix.generation_type.unlerp.tooltip": "Wpływ na wydajność: \u00A7b\u00A7lżaden\u00A7r\nUżywa domyślnej generacji modelu, ale\nstosuje trochę matematyki, aby wyglądała poprawnie.\nMoże powodować miganie wzdłuż linii modelu.",
+  "option.itemmodelfix.generation_type.outline": "Zarys",
+  "option.itemmodelfix.generation_type.outline.tooltip": "Wpływ na wydajność: \u00A7b\u00A7lżaden\u00A7r\nTaki sam jak tryb Unlerp, ale używa\ninnego algorytmu generacji, aby\nzapobiec miganiu poświaty zaklęć.",
+  "option.itemmodelfix.generation_type.pixel": "Piksel",
+  "option.itemmodelfix.generation_type.pixel.tooltip": "Wpływ na wydajność: \u00A7b\u00A7lżaden\u00A7r-\u00A7a\u00A7lniski\u00A7r\nIndywidualnie generuje wszystkie piksele. Dostarcza\nnajlepsze rezultaty, ale ma większy wpływ na wydajność \npodczas używania paczek zasobów o wyższych rozdzielczościach."
+}
