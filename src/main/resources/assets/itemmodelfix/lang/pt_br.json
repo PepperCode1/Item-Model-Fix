@@ -1,0 +1,14 @@
+{
+    "screen.itemmodelfix.config.title": "Configuração de correção do modelo de item",
+    "category.itemmodelfix.general": "Geral",
+    "option.itemmodelfix.generation_type": "Tipo de geração de modelo de item",
+    "option.itemmodelfix.generation_type.vanilla": "Vanilla",
+    "option.itemmodelfix.generation_type.vanilla.tooltip": "Impacto no desempenho: \u00A7b\u00A7lNenhum\u00A7r\nUsa geração de modelo Vanilla.",
+    "option.itemmodelfix.generation_type.unlerp": "Unlerp",
+    "option.itemmodelfix.generation_type.unlerp.tooltip": "Impacto no desempenho: \u00A7b\u00A7lNenhum\u00A7r\nUsa geração de modelo Vanilla, mas\naplica um pouco de matemática para parecer correto.\nPode causar cintilação ao longo das bordas do modelo.",
+    "option.itemmodelfix.generation_type.outline": "Outline",
+    "option.itemmodelfix.generation_type.outline.tooltip": "Impacto no desempenho: \u00A7b\u00A7lNenhum\u00A7r\nIgual ao modo Unlerp, mas usa um\nalgoritmo de geração diferente para\nevitar cintilação de brilho de encantamento.",
+    "option.itemmodelfix.generation_type.pixel": "Pixel",
+    "option.itemmodelfix.generation_type.pixel.tooltip": "Impacto no desempenho: \u00A7b\u00A7lNenhum\u00A7r-\u00A7a\u00A7lbaixo\u00A7r\nGera todos os pixels individualmente. Fornece\nmelhores resultados, mas causa um impacto maior\ncom pacotes de recursos de resolução mais alta."
+  }
+  
