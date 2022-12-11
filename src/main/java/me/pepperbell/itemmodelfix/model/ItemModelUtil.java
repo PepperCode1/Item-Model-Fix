@@ -5,13 +5,15 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import org.joml.Vector3f;
+
 import me.pepperbell.itemmodelfix.util.MathUtil;
 import net.minecraft.client.render.model.json.ModelElement;
 import net.minecraft.client.render.model.json.ModelElementFace;
 import net.minecraft.client.render.model.json.ModelElementTexture;
 import net.minecraft.client.texture.Sprite;
+import net.minecraft.client.texture.SpriteContents;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3f;
 
 public class ItemModelUtil {
 	public static void unlerpElements(List<ModelElement> elements, float delta) {
@@ -23,19 +25,20 @@ public class ItemModelUtil {
 	}
 
 	public static List<ModelElement> createOutlineLayerElements(int layer, String key, Sprite sprite) {
+		SpriteContents contents = sprite.getContents();
 		List<ModelElement> elements = new ArrayList<>();
 
-		int width = sprite.getWidth();
-		int height = sprite.getHeight();
+		int width = contents.getWidth();
+		int height = contents.getHeight();
 		float xFactor = width / 16.0F;
 		float yFactor = height / 16.0F;
 		float animationFrameDelta = sprite.getAnimationFrameDelta();
-		int[] frames = sprite.getDistinctFrameCount().toArray();
+		int[] frames = contents.getDistinctFrameCount().toArray();
 
 		Map<Direction, ModelElementFace> map = new EnumMap<>(Direction.class);
 		map.put(Direction.SOUTH, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] { 0.0F, 0.0F, 16.0F, 16.0F }, 0, animationFrameDelta)));
 		map.put(Direction.NORTH, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] { 16.0F, 0.0F, 0.0F, 16.0F }, 0, animationFrameDelta)));
-		elements.add(new ModelElement(new Vec3f(0.0F, 0.0F, 7.5F), new Vec3f(16.0F, 16.0F, 8.5F), map, null, true));
+		elements.add(new ModelElement(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), map, null, true));
 
 		int first1 = -1;
 		int first2 = -1;
@@ -44,14 +47,14 @@ public class ItemModelUtil {
 
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				if (!isPixelAlwaysTransparent(sprite, frames, x, y)) {
-					if (doesPixelHaveEdge(sprite, frames, x, y, PixelDirection.DOWN)) {
+				if (!isPixelAlwaysTransparent(contents, frames, x, y)) {
+					if (doesPixelHaveEdge(contents, frames, x, y, PixelDirection.DOWN)) {
 						if (first1 == -1) {
 							first1 = x;
 						}
 						last1 = x;
 					}
-					if (doesPixelHaveEdge(sprite, frames, x, y, PixelDirection.UP)) {
+					if (doesPixelHaveEdge(contents, frames, x, y, PixelDirection.UP)) {
 						if (first2 == -1) {
 							first2 = x;
 						}
@@ -81,14 +84,14 @@ public class ItemModelUtil {
 
 		for (int x = 0; x < width; ++x) {
 			for (int y = 0; y < height; ++y) {
-				if (!isPixelAlwaysTransparent(sprite, frames, x, y)) {
-					if (doesPixelHaveEdge(sprite, frames, x, y, PixelDirection.RIGHT)) {
+				if (!isPixelAlwaysTransparent(contents, frames, x, y)) {
+					if (doesPixelHaveEdge(contents, frames, x, y, PixelDirection.RIGHT)) {
 						if (first1 == -1) {
 							first1 = y;
 						}
 						last1 = y;
 					}
-					if (doesPixelHaveEdge(sprite, frames, x, y, PixelDirection.LEFT)) {
+					if (doesPixelHaveEdge(contents, frames, x, y, PixelDirection.LEFT)) {
 						if (first2 == -1) {
 							first2 = y;
 						}
@@ -122,31 +125,31 @@ public class ItemModelUtil {
 	public static ModelElement createHorizontalOutlineElement(Direction direction, int layer, String key, int start, int end, int y, int height, float animationFrameDelta, float xFactor, float yFactor) {
 		Map<Direction, ModelElementFace> faces = new EnumMap<>(Direction.class);
 		faces.put(direction, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] { start / xFactor, y / yFactor, (end + 1) / xFactor, (y + 1) / yFactor }, 0, animationFrameDelta)));
-		return new ModelElement(new Vec3f(start / xFactor, (height - (y + 1)) / yFactor, 7.5F), new Vec3f((end + 1) / xFactor, (height - y) / yFactor, 8.5F), faces, null, true);
+		return new ModelElement(new Vector3f(start / xFactor, (height - (y + 1)) / yFactor, 7.5F), new Vector3f((end + 1) / xFactor, (height - y) / yFactor, 8.5F), faces, null, true);
 	}
 
 	public static ModelElement createVerticalOutlineElement(Direction direction, int layer, String key, int start, int end, int x, int height, float animationFrameDelta, float xFactor, float yFactor) {
 		Map<Direction, ModelElementFace> faces = new EnumMap<>(Direction.class);
 		faces.put(direction, new ModelElementFace(null, layer, key, createUnlerpedTexture(new float[] { (x + 1) / xFactor, start / yFactor, x / xFactor, (end + 1) / yFactor }, 0, animationFrameDelta)));
-		return new ModelElement(new Vec3f(x / xFactor, (height - (end + 1)) / yFactor, 7.5F), new Vec3f((x + 1) / xFactor, (height - start) / yFactor, 8.5F), faces, null, true);
+		return new ModelElement(new Vector3f(x / xFactor, (height - (end + 1)) / yFactor, 7.5F), new Vector3f((x + 1) / xFactor, (height - start) / yFactor, 8.5F), faces, null, true);
 	}
 
 	public static ModelElementTexture createUnlerpedTexture(float[] uvs, int rotation, float delta) {
 		return new ModelElementTexture(MathUtil.unlerpUVs(uvs, delta), rotation);
 	}
 
-	public static List<ModelElement> createPixelLayerElements(int layer, String key, Sprite sprite) {
+	public static List<ModelElement> createPixelLayerElements(int layer, String key, SpriteContents contents) {
 		List<ModelElement> elements = new ArrayList<>();
 
-		int width = sprite.getWidth();
-		int height = sprite.getHeight();
+		int width = contents.getWidth();
+		int height = contents.getHeight();
 		float xFactor = width / 16.0F;
 		float yFactor = height / 16.0F;
-		int[] frames = sprite.getDistinctFrameCount().toArray();
+		int[] frames = contents.getDistinctFrameCount().toArray();
 
 		for (int y = 0; y < height; ++y) {
 			for (int x = 0; x < width; ++x) {
-				if (!isPixelAlwaysTransparent(sprite, frames, x, y)) {
+				if (!isPixelAlwaysTransparent(contents, frames, x, y)) {
 					Map<Direction, ModelElementFace> faces = new EnumMap<>(Direction.class);
 					ModelElementFace face = new ModelElementFace(null, layer, key, new ModelElementTexture(new float[] { x / xFactor, y / yFactor, (x + 1) / xFactor, (y + 1) / yFactor }, 0));
 					ModelElementFace flippedFace = new ModelElementFace(null, layer, key, new ModelElementTexture(new float[] { (x + 1) / xFactor, y / yFactor, x / xFactor, (y + 1) / yFactor }, 0));
@@ -154,12 +157,12 @@ public class ItemModelUtil {
 					faces.put(Direction.SOUTH, face);
 					faces.put(Direction.NORTH, flippedFace);
 					for (PixelDirection pixelDirection : PixelDirection.VALUES) {
-						if (doesPixelHaveEdge(sprite, frames, x, y, pixelDirection)) {
+						if (doesPixelHaveEdge(contents, frames, x, y, pixelDirection)) {
 							faces.put(pixelDirection.getDirection(), pixelDirection.isVertical() ? face : flippedFace);
 						}
 					}
 
-					elements.add(new ModelElement(new Vec3f(x / xFactor, (height - (y + 1)) / yFactor, 7.5F), new Vec3f((x + 1) / xFactor, (height - y) / yFactor, 8.5F), faces, null, true));
+					elements.add(new ModelElement(new Vector3f(x / xFactor, (height - (y + 1)) / yFactor, 7.5F), new Vector3f((x + 1) / xFactor, (height - y) / yFactor, 8.5F), faces, null, true));
 				}
 			}
 		}
@@ -167,31 +170,31 @@ public class ItemModelUtil {
 		return elements;
 	}
 
-	public static boolean isPixelOutsideSprite(Sprite sprite, int x, int y) {
-		return x < 0 || y < 0 || x >= sprite.getWidth() || y >= sprite.getHeight();
+	public static boolean isPixelOutsideSprite(SpriteContents contents, int x, int y) {
+		return x < 0 || y < 0 || x >= contents.getWidth() || y >= contents.getHeight();
 	}
 
-	public static boolean isPixelTransparent(Sprite sprite, int frame, int x, int y) {
-		return isPixelOutsideSprite(sprite, x, y) ? true : sprite.isPixelTransparent(frame, x, y);
+	public static boolean isPixelTransparent(SpriteContents contents, int frame, int x, int y) {
+		return isPixelOutsideSprite(contents, x, y) ? true : contents.isPixelTransparent(frame, x, y);
 	}
 
-	public static boolean isPixelAlwaysTransparent(Sprite sprite, int[] frames, int x, int y) {
+	public static boolean isPixelAlwaysTransparent(SpriteContents contents, int[] frames, int x, int y) {
 		for (int frame : frames) {
-			if (!isPixelTransparent(sprite, frame, x, y)) {
+			if (!isPixelTransparent(contents, frame, x, y)) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public static boolean doesPixelHaveEdge(Sprite sprite, int[] frames, int x, int y, PixelDirection direction) {
+	public static boolean doesPixelHaveEdge(SpriteContents contents, int[] frames, int x, int y, PixelDirection direction) {
 		int x1 = x + direction.getOffsetX();
 		int y1 = y + direction.getOffsetY();
-		if (isPixelOutsideSprite(sprite, x1, y1)) {
+		if (isPixelOutsideSprite(contents, x1, y1)) {
 			return true;
 		}
 		for (int frame : frames) {
-			if (!isPixelTransparent(sprite, frame, x, y) && isPixelTransparent(sprite, frame, x1, y1)) {
+			if (!isPixelTransparent(contents, frame, x, y) && isPixelTransparent(contents, frame, x1, y1)) {
 				return true;
 			}
 		}
