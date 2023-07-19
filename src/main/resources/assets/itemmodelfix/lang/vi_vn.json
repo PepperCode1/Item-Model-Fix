@@ -1,0 +1,13 @@
+{
+  "screen.itemmodelfix.config.title": "Cấu hình Item Model Fix",
+  "category.itemmodelfix.general": "Chung",
+  "option.itemmodelfix.generation_type": "Loại tạo mẫu",
+  "option.itemmodelfix.generation_type.vanilla": "Truyền thống",
+  "option.itemmodelfix.generation_type.vanilla.tooltip": "Tác động đến hiệu suất: \u00A7b\u00A7lnone\u00A7r\nSử dụng tạo mô hình truyền thống.",
+  "option.itemmodelfix.generation_type.unlerp": "Unlerp",
+  "option.itemmodelfix.generation_type.unlerp.tooltip": "Tác động đến hiệu suất: \u00A7b\u00A7lnone\u00A7r\nSử dụng tính năng tạo mô hình Vanilla nhưng\náp dụng một số phép toán để làm cho mô hình trông chính xác.\nCó thể gây nhấp nháy dọc theo các cạnh của mô hình.",
+  "option.itemmodelfix.generation_type.outline": "Phác thảo",
+  "option.itemmodelfix.generation_type.outline.tooltip": "Tác động đến hiệu suất: \u00A7b\u00A7lnone\u00A7r\nGiống như chế độ Unlerp, nhưng sử dụng một\thuật toán tạo khác để\nngăn ánh sáng nhấp nháy của đồ cường hoá.",
+  "option.itemmodelfix.generation_type.pixel": "Điểm ảnh",
+  "option.itemmodelfix.generation_type.pixel.tooltip": "Tác động đến hiệu suất: \u00A7b\u00A7lnone\u00A7r-\u00A7a\u00A7llow\u00A7r\nTạo tất cả các pixel riêng lẻ. Cung cấp\nkết quả tốt nhất nhưng gây ra tác động lớn hơn\nvới các gói tài nguyên có độ phân giải cao hơn."
+}
